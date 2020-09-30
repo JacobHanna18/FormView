@@ -10,9 +10,30 @@ import SwiftUI
 struct DateInput: View {
     let cell : FormCell
     @State var inp: Date = Date()
+    
+    var components : DatePickerComponents{
+        var time = false
+        var date = true
+        switch cell.type {
+        case let .DateInput(showTime: x, showDate: y):
+            time = x
+            date = y
+        default:
+            break
+        }
+        
+        if time && date{
+            return [.date,.hourAndMinute]
+        }else if time{
+            return [.hourAndMinute]
+        }else {
+            return [.date]
+        }
+    }
+    
     var body: some View {
         VStack{
-            DatePicker(cell.title ?? "error", selection: $inp, displayedComponents: [.date])
+            DatePicker(cell.title ?? "error", selection: $inp, displayedComponents: components)
         }.onAppear(perform: {
             inp = (cell.getT(Date.self) ?? Date())
         }).onChange(of: inp, perform: { value in
@@ -24,7 +45,7 @@ struct DateInput: View {
 var testDateInput : Date = Date()
 struct DateInput_Previews: PreviewProvider {
     static var previews: some View {
-        DateInput(cell: FormCell(type: .ColorInput, title: "test title", set: { (color) in
+        DateInput(cell: FormCell(type: .DateInput(showTime: true, showDate: false), title: "test title", set: { (color) in
             if let co = color as? Date{
                 print(co.description)
                 testDateInput = co

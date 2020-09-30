@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct FormProperties{
     var title : String?
@@ -31,11 +32,15 @@ enum CellType{
     
     //other
     case ColorInput
-    case DateInput
+    case DateInput(showTime : Bool, showDate: Bool)
     case BoolInput
+    //case Selection(singleSelection: Bool, labels: [String])
 }
 
-struct FormCell{
+struct FormCell: Identifiable{
+    
+    let id = UUID()
+    
     var type : CellType
     
     var title : String?
@@ -57,5 +62,6 @@ struct FormCell{
            forcedSet(inp)
         }
     }
+    
     
 }

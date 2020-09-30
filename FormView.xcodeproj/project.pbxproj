@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D635A9C2524EB7000CE3F01 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D635A9B2524EB7000CE3F01 /* FormView.swift */; };
 		7D812C5F2523844E00F174C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812C5E2523844E00F174C9 /* AppDelegate.swift */; };
 		7D812C612523844E00F174C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812C602523844E00F174C9 /* SceneDelegate.swift */; };
 		7D812C632523844E00F174C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812C622523844E00F174C9 /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D635A9B2524EB7000CE3F01 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		7D812C5B2523844E00F174C9 /* FormView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D812C5E2523844E00F174C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D812C602523844E00F174C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				7D812CAF2523AFEE00F174C9 /* extensions.swift */,
 				7D812C912523861300F174C9 /* FormProperties.swift */,
 				7D812CCD2523B40500F174C9 /* Cells */,
+				7D635A9B2524EB7000CE3F01 /* FormView.swift */,
 			);
 			path = FormView;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				7D812C612523844E00F174C9 /* SceneDelegate.swift in Sources */,
 				7D812C9C2523886E00F174C9 /* StringSub1.swift in Sources */,
 				7D812CC92523B38000F174C9 /* DoubleSub.swift in Sources */,
+				7D635A9C2524EB7000CE3F01 /* FormView.swift in Sources */,
 				7D812CA12523A89200F174C9 /* StringSub2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

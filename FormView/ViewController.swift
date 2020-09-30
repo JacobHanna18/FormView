@@ -16,15 +16,30 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 //        // Do any additional setup after loading the view.
 
-        let childView = UIHostingController(rootView: BoolInput(cell: FormCell(type: .BoolInput, title: "Test Title", set: { (str) in
-            if let st = str as? Bool{
-                testBoolInput = st;
-                print(testBoolInput)
-            }
-        }, get: { () -> Any in
-            print("get")
-            return testBoolInput
-        })))
+        let childView = UIHostingController(rootView: FormView(props: FormProperties(title: "TestTitle", done: {
+            print("done")
+        }, delete: {
+            print("delete")
+        }, dismiss: {
+            print("dismiss")
+        }, cells: [
+            FormCell(type: .ColorInput, title: "test title", set: { (color) in
+                if let co = color as? Color{
+                    print(co.description)
+                    testColorInput = co
+                }
+            }, get: { () -> Any in
+                return testColorInput
+            }),
+            FormCell(type: .DoubleInput, title: "Test Title", set: { (str) in
+                if let st = str as? Double{
+                    testDoubleInput = st;
+                    print(testDoubleInput)
+                }
+            }, get: { () -> Any in
+                return testDoubleInput
+            })
+        ])))
         addChild(childView)
         childView.view.frame = mainView.bounds
         mainView.addSubview(childView.view)
