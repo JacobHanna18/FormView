@@ -29,7 +29,7 @@ struct SingleSelection: View {
                     Spacer()
                     Button(labels[i]) {
                         inp = i
-                    }.background(i == inp ? Color.blue : Color.clear).accentColor(i == inp ? Color(UIColor.systemBackground) : Color.accentColor).cornerRadius(10.0)
+                    }.padding(.all, 5).accentColor(i == inp ? Color(UIColor.systemBackground) : Color.accentColor).frame( maxWidth: .infinity).background((i == inp ? Color.blue : Color.clear)).cornerRadius(10.0)
                 }
                 Spacer()
             }
