@@ -35,6 +35,7 @@ enum CellType{
     case DateInput(showTime : Bool, showDate: Bool)
     case BoolInput
     case SingleSelection(labels : [String])
+    case LongStringInput(height : CGFloat)
     //case Selection(singleSelection: Bool, labels: [String])
 }
 
@@ -90,6 +91,8 @@ struct FormCell: View, Identifiable{
              BoolInput(cell: self)
         case .SingleSelection:
             SingleSelection(cell: self)
+        case .LongStringInput:
+            LongStringInput(cell: self)
         }
     }
     
