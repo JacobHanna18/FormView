@@ -12,33 +12,38 @@ struct FormView: View {
     let props : FormProperties
     
     var body: some View {
-        Text(props.title ?? "error")
-        List(props.cells) { cell in
-            switch cell.type{
-            case .StringTitle:
-                 StringTitle(cell: cell)
-            case .StringInput:
-                 StringInput(cell: cell)
-            case .StringSub1:
-                 StringSub1(cell: cell)
-            case .StringSub2:
-                 StringSub2(cell: cell)
-            case .IntSub:
-                 IntSub(cell: cell)
-            case .IntInput:
-                 IntInput(cell: cell)
-            case .DoubleSub:
-                 DoubleSub(cell: cell)
-            case .DoubleInput:
-                 DoubleInput(cell: cell)
-            case .ColorInput:
-                 ColorInput(cell: cell)
-            case .DateInput:
-                 DateInput(cell: cell)
-            case .BoolInput:
-                 BoolInput(cell: cell)
+        VStack{
+            Text(props.title ?? "error")
+            ScrollView {
+                VStack {
+                    ForEach(props.cells) { cell in
+                        cell.padding([.top, .leading, .trailing])
+                    }
+                }
+            }
+//            List(props.cells) { cell in
+//                cell
+//            }
+            HStack {
+                Spacer()
+                Button(action: {
+                    props.done?()
+                }) {
+                    Text("Done")
+                }
+                .padding(.all)
+                Spacer()
+                Button(action: {
+                    props.delete?()
+                }) {
+                    Text("Delete")
+                        .accentColor(/*@START_MENU_TOKEN@*/.red/*@END_MENU_TOKEN@*/)
+                }
+                .padding(.all)
+                Spacer()
             }
         }
+        
     }
 }
 

@@ -11,10 +11,14 @@ struct StringSub1: View {
     let cell : FormCell
     var body: some View {
         VStack{
-            Text(cell.title ?? "error")
-                .multilineTextAlignment(.center)
-                .padding(.trailing)
-            Text(cell.getT(String.self) ?? "error")
+            HStack {
+                Text(cell.title ?? "error")
+                Spacer()
+            }
+            HStack {
+                Text(cell.getT(String.self) ?? "error")
+                Spacer()
+            }
         }
     }
 }

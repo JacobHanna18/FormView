@@ -34,10 +34,11 @@ enum CellType{
     case ColorInput
     case DateInput(showTime : Bool, showDate: Bool)
     case BoolInput
+    case SingleSelection(labels : [String])
     //case Selection(singleSelection: Bool, labels: [String])
 }
 
-struct FormCell: Identifiable{
+struct FormCell: View, Identifiable{
     
     let id = UUID()
     
@@ -62,6 +63,36 @@ struct FormCell: Identifiable{
            forcedSet(inp)
         }
     }
+    
+    var body: some View{
+        switch type{
+        case .StringTitle:
+             StringTitle(cell: self)
+        case .StringInput:
+             StringInput(cell: self)
+        case .StringSub1:
+             StringSub1(cell: self)
+        case .StringSub2:
+             StringSub2(cell: self)
+        case .IntSub:
+             IntSub(cell: self)
+        case .IntInput:
+             IntInput(cell: self)
+        case .DoubleSub:
+             DoubleSub(cell: self)
+        case .DoubleInput:
+             DoubleInput(cell: self)
+        case .ColorInput:
+             ColorInput(cell: self)
+        case .DateInput:
+             DateInput(cell: self)
+        case .BoolInput:
+             BoolInput(cell: self)
+        case .SingleSelection:
+            SingleSelection(cell: self)
+        }
+    }
+    
     
     
 }

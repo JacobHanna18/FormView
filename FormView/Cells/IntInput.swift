@@ -12,8 +12,13 @@ struct IntInput: View {
     @State var inp: String = "0"
     var body: some View {
         VStack{
-            Text(cell.title ?? "error")
-            TextField(cell.title ?? "error", text: $inp).keyboardType(.numberPad)
+            HStack {
+                Text(cell.title ?? "error")
+                Spacer()
+            }
+            TextField(cell.title ?? "error", text: $inp, onCommit: {
+                UIApplication.shared.endEditing()
+            }).keyboardType(.numberPad).textFieldStyle(RoundedBorderTextFieldStyle())
         }.onAppear(perform: {
             inp = (cell.getT(Int.self) ?? 0).toString
         }).onChange(of: inp, perform: { value in
@@ -27,7 +32,7 @@ struct IntInput: View {
 var testIntInput = 7647
 struct IntInput_Previews: PreviewProvider {
     static var previews: some View {
-        IntInput(cell: FormCell(type: .DoubleInput, title: "Test Title", set: { (str) in
+        IntInput(cell: FormCell(type: .IntInput, title: "Test Title", set: { (str) in
             if let st = str as? Int{
                 testIntInput = st;
                 print(testIntInput)

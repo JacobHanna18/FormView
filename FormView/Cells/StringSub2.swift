@@ -12,8 +12,7 @@ struct StringSub2: View {
     var body: some View {
         HStack{
             Text(cell.title ?? "error")
-                .multilineTextAlignment(.center)
-                .padding(.trailing)
+            Spacer()
             Text(cell.getT(String.self) ?? "error")
         }
     }
@@ -21,7 +20,7 @@ struct StringSub2: View {
 
 struct StringSub2_Previews: PreviewProvider {
     static var previews: some View {
-        StringSub2(cell: FormCell(type: .StringSub1, title: "Test Title", get: { () -> Any in
+        StringSub2(cell: FormCell(type: .StringSub2, title: "Test Title", get: { () -> Any in
             return "test subtitle 2"
         }))
     }

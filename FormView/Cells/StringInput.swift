@@ -12,8 +12,13 @@ struct StringInput: View {
     @State var inp: String = ""
     var body: some View {
         VStack{
-            Text(cell.title ?? "error")
-            TextField(cell.title ?? "error", text: $inp)
+            HStack{
+                Text(cell.title ?? "error")
+                Spacer()
+            }
+            TextField(cell.title ?? "error", text: $inp, onCommit: {
+                UIApplication.shared.endEditing()
+            }).textFieldStyle(RoundedBorderTextFieldStyle())
         }.onAppear(perform: {
             inp = cell.getT(String.self) ?? ""
         }).onChange(of: inp, perform: { value in

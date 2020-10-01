@@ -10,9 +10,13 @@ import SwiftUI
 struct StringTitle: View {
     let cell : FormCell
     var body: some View {
-        Text(cell.title ?? "error")
-            .multilineTextAlignment(.center)
-            .padding(.trailing)
+        
+        HStack {
+            Text(cell.title ?? "error")
+                .multilineTextAlignment(.center)
+                .padding(.trailing)
+            Spacer()
+        }
     }
 }
 

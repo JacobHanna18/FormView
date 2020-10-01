@@ -5,7 +5,7 @@
 //  Created by Jacob Hanna on 29/09/2020.
 //
 
-import Foundation
+import UIKit
 
 
 extension Double{
@@ -25,5 +25,11 @@ extension Double{
 extension Int{
     public var toString : String{
         return "\(self)"
+    }
+}
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }

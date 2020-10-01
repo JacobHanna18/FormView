@@ -29,6 +29,7 @@
 		7D812CD22523B41E00F174C9 /* ColorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812CD12523B41E00F174C9 /* ColorInput.swift */; };
 		7D812CD72523B6EC00F174C9 /* DateInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812CD62523B6EC00F174C9 /* DateInput.swift */; };
 		7D812CDC2523B92D00F174C9 /* BoolInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812CDB2523B92D00F174C9 /* BoolInput.swift */; };
+		7DFB729F252609BF008E74C4 /* SingleSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFB729E252609BF008E74C4 /* SingleSelection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		7D812CD12523B41E00F174C9 /* ColorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInput.swift; sourceTree = "<group>"; };
 		7D812CD62523B6EC00F174C9 /* DateInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInput.swift; sourceTree = "<group>"; };
 		7D812CDB2523B92D00F174C9 /* BoolInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolInput.swift; sourceTree = "<group>"; };
+		7DFB729E252609BF008E74C4 /* SingleSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,8 +138,8 @@
 				7D812C6C2523845100F174C9 /* Info.plist */,
 				7D812CAF2523AFEE00F174C9 /* extensions.swift */,
 				7D812C912523861300F174C9 /* FormProperties.swift */,
-				7D812CCD2523B40500F174C9 /* Cells */,
 				7D635A9B2524EB7000CE3F01 /* FormView.swift */,
+				7D812CCD2523B40500F174C9 /* Cells */,
 			);
 			path = FormView;
 			sourceTree = "<group>";
@@ -174,6 +176,7 @@
 				7D812CD12523B41E00F174C9 /* ColorInput.swift */,
 				7D812CD62523B6EC00F174C9 /* DateInput.swift */,
 				7D812CDB2523B92D00F174C9 /* BoolInput.swift */,
+				7DFB729E252609BF008E74C4 /* SingleSelection.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				7D812C922523861300F174C9 /* FormProperties.swift in Sources */,
 				7D812CD22523B41E00F174C9 /* ColorInput.swift in Sources */,
 				7D812CAB2523AF9200F174C9 /* DoubleInput.swift in Sources */,
+				7DFB729F252609BF008E74C4 /* SingleSelection.swift in Sources */,
 				7D812C632523844E00F174C9 /* ViewController.swift in Sources */,
 				7D812CC42523B2F700F174C9 /* IntSub.swift in Sources */,
 				7D812CDC2523B92D00F174C9 /* BoolInput.swift in Sources */,

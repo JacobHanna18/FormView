@@ -12,8 +12,13 @@ struct DoubleInput: View {
     @State var inp: String = "0.0"
     var body: some View {
         VStack{
-            Text(cell.title ?? "error")
-            TextField(cell.title ?? "error", text: $inp).keyboardType(.decimalPad)
+            HStack {
+                Text(cell.title ?? "error")
+                Spacer()
+            }
+            TextField(cell.title ?? "error", text: $inp, onCommit: {
+                UIApplication.shared.endEditing()
+            }).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
         }.onAppear(perform: {
             inp = (cell.getT(Double.self) ?? 0).toString
         }).onChange(of: inp, perform: { value in
