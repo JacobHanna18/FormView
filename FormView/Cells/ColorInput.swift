@@ -12,7 +12,9 @@ struct ColorInput: View {
     @State var inp: Color = .red
     var body: some View {
         VStack{
-            ColorPicker(cell.title ?? "error", selection: $inp)
+            ColorPicker(selection: $inp, label: {
+                CellTitleView(title: cell.title)
+            })
         }.onAppear(perform: {
             inp = (cell.getT(Color.self) ?? Color.red)
         }).onChange(of: inp, perform: { value in

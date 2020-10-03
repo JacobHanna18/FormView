@@ -33,7 +33,9 @@ struct DateInput: View {
     
     var body: some View {
         VStack{
-            DatePicker(cell.title ?? "error", selection: $inp, displayedComponents: components)
+            DatePicker(selection: $inp, displayedComponents: components) {
+                CellTitleView(title: cell.title)
+            }
         }.onAppear(perform: {
             inp = (cell.getT(Date.self) ?? Date())
         }).onChange(of: inp, perform: { value in

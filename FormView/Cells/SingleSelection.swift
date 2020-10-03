@@ -20,10 +20,7 @@ struct SingleSelection: View {
     @State var inp: Int = 0
     var body: some View {
         VStack{
-            HStack {
-                Text(cell.title ?? "error")
-                Spacer()
-            }
+            CellTitleView(title: cell.title)
             HStack {
                 ForEach((0..<labels.count), id: \.self) {i in
                     Spacer()

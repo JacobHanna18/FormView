@@ -11,8 +11,7 @@ struct StringSub2: View {
     let cell : FormCell
     var body: some View {
         HStack{
-            Text(cell.title ?? "error")
-            Spacer()
+            CellTitleView(title: cell.title)
             Text(cell.getT(String.self) ?? "error")
         }
     }

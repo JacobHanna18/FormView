@@ -11,8 +11,7 @@ struct DoubleSub: View {
     let cell : FormCell
     var body: some View {
         HStack{
-            Text(cell.title ?? "error")
-            Spacer()
+            CellTitleView(title: cell.title)
             Text((cell.getT(Double.self) ?? 0).toString)
         }
     }

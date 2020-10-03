@@ -11,47 +11,68 @@ struct FormView: View {
     
     let props : FormProperties
     
-    let padding : CGFloat = 200
+    let spacing : CGFloat
+    
+    var dismiss : (()->Void)? = nil
+    
+    @State var h : CGFloat = 0
+    
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View{
-        ZStack{
-            Color.black.opacity(0.5).ignoresSafeArea()
-            (Color(UIColor.systemBackground)).ignoresSafeArea().padding(.top, padding + 100)
-            mainView.background(Color(UIColor.systemBackground)).cornerRadius(20).padding(.top, padding)
+        GeometryReader { geometry in
+            ZStack{
+                (Color(UIColor.systemBackground)).ignoresSafeArea().padding(.top, h + 100)
+                mainView.background(Color(UIColor.systemBackground)).cornerRadius(20).padding(.top, (h))
+            }.onAppear(perform: {
+                h = geometry.size.height
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    h = spacing
+                }
+            })
         }
         
     }
     
     var mainView: some View {
-        VStack{
-            HStack{
-                Text(props.title ?? "error").font(.title).fontWeight(.bold).padding([.top, .leading, .trailing], 15.0)
-                Spacer()
-            }
-            ScrollView {
-                VStack {
-                    ForEach(props.cells) { cell in
-                        cell.padding(.horizontal).padding(.vertical,8)
+        GeometryReader { geometry in
+            VStack{
+                HStack{
+                    Text(props.title ?? "error").font(.title).fontWeight(.bold).padding([.top, .leading, .trailing], 15.0)
+                    Spacer()
+                }
+                ScrollView {
+                    VStack {
+                        ForEach(props.cells) { cell in
+                            cell.padding(.horizontal).padding(.vertical,8)
+                        }
                     }
                 }
-            }
-            HStack {
-                Spacer()
-                Button(action: {
-                    props.done?()
-                }) {
-                    Text("Done")
-                }.frame(maxWidth: .infinity)
-                .padding(.all)
-                Spacer()
-                Button(action: {
-                    props.delete?()
-                }) {
-                    Text("Delete")
-                        .accentColor(/*@START_MENU_TOKEN@*/.red/*@END_MENU_TOKEN@*/)
-                }.frame(maxWidth: .infinity)
-                .padding(.all)
-                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        
+                        withAnimation(.easeInOut(duration: 0.5)) {
+                            h = geometry.size.height
+                            dismiss?()
+                            props.done?()
+                        }
+                        
+                        
+                    }) {
+                        Text("Done")
+                    }.frame(maxWidth: .infinity)
+                    .padding(.all)
+                    Spacer()
+                    Button(action: {
+                        props.delete?()
+                    }) {
+                        Text("Delete")
+                            .accentColor(/*@START_MENU_TOKEN@*/.red/*@END_MENU_TOKEN@*/)
+                    }.frame(maxWidth: .infinity)
+                    .padding(.all)
+                    Spacer()
+                }
             }
         }
         
@@ -132,7 +153,7 @@ let c12 = FormCell(type: .SingleSelection(labels: ["label1","label2"]), title: "
     return testSingleSelectionInput
 })
 
-let c13 =  FormCell(type: .LongStringInput(height: 500), title: "Test Title", set: { (str) in
+let c13 =  FormCell(type: .LongStringInput(height: 100), title: "Test Title", set: { (str) in
     if let st = str as? String{
         testStringInput = st;
         print(testStringInput)
@@ -153,6 +174,6 @@ struct FormView_Previews: PreviewProvider {
             print("dismiss")
         }, cells: [
             c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13
-            ]))
+        ]), spacing: 200)
     }
 }

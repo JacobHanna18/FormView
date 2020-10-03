@@ -12,10 +12,7 @@ struct StringInput: View {
     @State var inp: String = ""
     var body: some View {
         VStack{
-            HStack{
-                Text(cell.title ?? "error")
-                Spacer()
-            }
+            CellTitleView(title: cell.title)
             TextField(cell.title ?? "error", text: $inp, onCommit: {
                 UIApplication.shared.endEditing()
             }).textFieldStyle(RoundedBorderTextFieldStyle())

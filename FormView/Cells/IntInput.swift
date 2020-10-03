@@ -12,10 +12,7 @@ struct IntInput: View {
     @State var inp: String = "0"
     var body: some View {
         VStack{
-            HStack {
-                Text(cell.title ?? "error")
-                Spacer()
-            }
+            CellTitleView(title: cell.title)
             TextField(cell.title ?? "error", text: $inp, onCommit: {
                 UIApplication.shared.endEditing()
             }).keyboardType(.numberPad).textFieldStyle(RoundedBorderTextFieldStyle())

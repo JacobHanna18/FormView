@@ -12,7 +12,9 @@ struct BoolInput: View {
     @State var inp: Bool = true
     var body: some View {
         HStack{
-            Toggle(cell.title ?? "error", isOn: $inp)
+            Toggle(isOn: $inp, label: {
+                CellTitleView(title: cell.title)
+            })
         }.onAppear(perform: {
             inp = (cell.getT(Bool.self) ?? true)
         }).onChange(of: inp, perform: { value in

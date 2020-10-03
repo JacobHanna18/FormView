@@ -20,10 +20,7 @@ struct LongStringInput: View {
     }
     var body: some View {
         VStack{
-            HStack{
-                Text(cell.title ?? "error")
-                Spacer()
-            }
+            CellTitleView(title: cell.title)
             ZStack{
                 Color.accentColor.opacity(0.5)
                 TextEditor(text: $inp).frame(minHeight: height, idealHeight: height, maxHeight: .infinity)

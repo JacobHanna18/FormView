@@ -11,12 +11,7 @@ struct StringTitle: View {
     let cell : FormCell
     var body: some View {
         
-        HStack {
-            Text(cell.title ?? "error")
-                .multilineTextAlignment(.center)
-                .padding(.trailing)
-            Spacer()
-        }
+        CellTitleView(title: cell.title)
     }
 }
 

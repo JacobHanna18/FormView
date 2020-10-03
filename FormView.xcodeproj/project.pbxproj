@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D224DC625266E370067CAFB /* CellTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D224DC525266E370067CAFB /* CellTitleView.swift */; };
 		7D635A9C2524EB7000CE3F01 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D635A9B2524EB7000CE3F01 /* FormView.swift */; };
 		7D812C5F2523844E00F174C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812C5E2523844E00F174C9 /* AppDelegate.swift */; };
 		7D812C612523844E00F174C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812C602523844E00F174C9 /* SceneDelegate.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D224DC525266E370067CAFB /* CellTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTitleView.swift; sourceTree = "<group>"; };
 		7D635A9B2524EB7000CE3F01 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		7D812C5B2523844E00F174C9 /* FormView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D812C5E2523844E00F174C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				7D812CDB2523B92D00F174C9 /* BoolInput.swift */,
 				7DFB729E252609BF008E74C4 /* SingleSelection.swift */,
 				7DD3B04825264F59007E048D /* LongStringInput.swift */,
+				7D224DC525266E370067CAFB /* CellTitleView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				7DFB729F252609BF008E74C4 /* SingleSelection.swift in Sources */,
 				7D812C632523844E00F174C9 /* ViewController.swift in Sources */,
 				7DD3B04925264F59007E048D /* LongStringInput.swift in Sources */,
+				7D224DC625266E370067CAFB /* CellTitleView.swift in Sources */,
 				7D812CC42523B2F700F174C9 /* IntSub.swift in Sources */,
 				7D812CDC2523B92D00F174C9 /* BoolInput.swift in Sources */,
 				7D812CA62523A92C00F174C9 /* StringInput.swift in Sources */,
@@ -511,6 +515,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 26VASZ3327;
 				INFOPLIST_FILE = FormView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -530,6 +535,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 26VASZ3327;
 				INFOPLIST_FILE = FormView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
