@@ -28,9 +28,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         fv.dismiss = {
-            self.dismiss(animated: false, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
         
         

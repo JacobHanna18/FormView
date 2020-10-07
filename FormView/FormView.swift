@@ -13,70 +13,70 @@ struct FormView: View {
     
     let spacing : CGFloat
     
-    var dismiss : (()->Void)? = nil
+    var dismiss : (()->Void)! = nil
     
-    @State var h : CGFloat = 0
+    @State var showAlert = false
     
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View{
-        GeometryReader { geometry in
-            ZStack{
-                (Color(UIColor.systemBackground)).ignoresSafeArea().padding(.top, h + 100)
-                mainView.background(Color(UIColor.systemBackground)).cornerRadius(20).padding(.top, (h))
-            }.onAppear(perform: {
-                h = geometry.size.height
-                withAnimation(.easeInOut(duration: 0.5)) {
-                    h = spacing
-                }
-            })
+        ZStack{
+//                (Color(UIColor.systemBackground)).ignoresSafeArea().padding(.top, h + 100)
+            Color(UIColor.systemBackground).ignoresSafeArea(.all)
+            mainView
         }
         
     }
     
     var mainView: some View {
-        GeometryReader { geometry in
-            VStack{
-                HStack{
-                    Text(props.title ?? "error").font(.title).fontWeight(.bold).padding([.top, .leading, .trailing], 15.0)
-                    Spacer()
-                }
-                ScrollView {
-                    VStack {
-                        ForEach(props.cells) { cell in
-                            cell.padding(.horizontal).padding(.vertical,8)
-                        }
+        VStack{
+            HStack{
+                Text(props.title ?? "error").font(.title).fontWeight(.bold).padding([.top, .leading, .trailing], 15.0)
+                Spacer()
+            }
+            ScrollView {
+                VStack {
+                    ForEach(props.cells) { cell in
+                        cell.padding(.horizontal).padding(.vertical,8)
                     }
                 }
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            h = geometry.size.height
-                            dismiss?()
-                            props.done?()
-                        }
-                        
-                        
-                    }) {
-                        Text("Done")
-                    }.frame(maxWidth: .infinity)
-                    .padding(.all)
-                    Spacer()
-                    Button(action: {
-                        props.delete?()
-                    }) {
-                        Text("Delete")
-                            .accentColor(/*@START_MENU_TOKEN@*/.red/*@END_MENU_TOKEN@*/)
-                    }.frame(maxWidth: .infinity)
-                    .padding(.all)
-                    Spacer()
-                }
             }
-        }
-        
+            HStack {
+                Spacer()
+                Button(action: {
+                    props.done?()
+                    dismiss()
+                    
+                    
+                }) {
+                    Text("Done")
+                }.frame(maxWidth: .infinity)
+                .padding(.all)
+                Spacer()
+                Button(action: {
+                    showAlert = true
+                }) {
+                    Text("Delete")
+                        .accentColor(/*@START_MENU_TOKEN@*/.red/*@END_MENU_TOKEN@*/)
+                }.frame(maxWidth: .infinity)
+                .padding(.all)
+                Spacer()
+            }
+        }.alert(isPresented: $showAlert, content: {
+            Alert(
+              title: Text("Are you sure?"),
+              message: Text("This cannot be undone."),
+                primaryButton: .destructive(Text("Yes"), action: {
+                    props.delete?()
+                    dismiss()
+                }),
+                secondaryButton: .cancel(Text("No"), action: {
+                    showAlert = false
+                })
+            )
+        })
     }
+        
 }
 
 
