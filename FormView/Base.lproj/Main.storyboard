@@ -8,42 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController modalPresentationStyle="pageSheet" id="BYZ-38-t0r" customClass="ViewController" customModule="FormView" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nxk-Yt-Th1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Nxk-Yt-Th1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="DHx-dI-e5d"/>
-                            <constraint firstItem="Nxk-Yt-Th1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IPw-Mf-Afg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Nxk-Yt-Th1" secondAttribute="trailing" id="nmo-sd-9D1"/>
-                            <constraint firstAttribute="bottom" secondItem="Nxk-Yt-Th1" secondAttribute="bottom" id="s17-Fu-OSm"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="WzV-7N-ENZ"/>
-                    <value key="contentSizeForViewInPopover" type="size" width="414" height="400"/>
-                    <connections>
-                        <outlet property="mainView" destination="Nxk-Yt-Th1" id="TXs-4T-V8W"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="89.855072463768124" y="66.964285714285708"/>
-        </scene>
-        <!--View Controller-->
+        <!--ButtonVC-->
         <scene sceneID="8Le-pG-VBm">
             <objects>
-                <viewController id="9ru-in-yOt" sceneMemberID="viewController">
+                <viewController id="9ru-in-yOt" customClass="ButtonVC" customModule="FormView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dzM-5L-cCM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,7 +20,7 @@
                                 <rect key="frame" x="169.5" y="433" width="75" height="30"/>
                                 <state key="normal" title="Show View"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="n0D-jH-kmR"/>
+                                    <action selector="showView:" destination="9ru-in-yOt" eventType="touchUpInside" id="qHU-kq-yFl"/>
                                 </connections>
                             </button>
                         </subviews>

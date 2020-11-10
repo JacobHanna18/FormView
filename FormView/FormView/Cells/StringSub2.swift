@@ -12,8 +12,10 @@ struct StringSub2: View {
     var body: some View {
         HStack{
             CellTitleView(title: cell.title)
-            Text(cell.getT(String.self) ?? "error")
-        }
+            Text(cell.getT(String.self) ?? "StrSub2 Err")
+        }.onTapGesture(perform: {
+            cell.tap?()
+        })
     }
 }
 

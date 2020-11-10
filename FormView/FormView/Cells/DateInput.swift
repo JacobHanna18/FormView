@@ -34,7 +34,9 @@ struct DateInput: View {
     var body: some View {
         VStack{
             DatePicker(selection: $inp, displayedComponents: components) {
-                CellTitleView(title: cell.title)
+                CellTitleView(title: cell.title).onTapGesture(perform: {
+                    cell.tap?()
+                })
             }
         }.onAppear(perform: {
             inp = (cell.getT(Date.self) ?? Date())
@@ -47,13 +49,6 @@ struct DateInput: View {
 var testDateInput : Date = Date()
 struct DateInput_Previews: PreviewProvider {
     static var previews: some View {
-        DateInput(cell: FormCell(type: .DateInput(showTime: true, showDate: false), title: "test title", set: { (color) in
-            if let co = color as? Date{
-                print(co.description)
-                testDateInput = co
-            }
-        }, get: { () -> Any in
-            return testDateInput
-        }))
+        DateInTemp
     }
 }

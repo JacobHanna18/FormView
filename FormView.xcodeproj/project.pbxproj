@@ -11,7 +11,7 @@
 		7D635A9C2524EB7000CE3F01 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D635A9B2524EB7000CE3F01 /* FormView.swift */; };
 		7D812C5F2523844E00F174C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812C5E2523844E00F174C9 /* AppDelegate.swift */; };
 		7D812C612523844E00F174C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812C602523844E00F174C9 /* SceneDelegate.swift */; };
-		7D812C632523844E00F174C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812C622523844E00F174C9 /* ViewController.swift */; };
+		7D812C632523844E00F174C9 /* FormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812C622523844E00F174C9 /* FormVC.swift */; };
 		7D812C662523844E00F174C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D812C642523844E00F174C9 /* Main.storyboard */; };
 		7D812C682523845100F174C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D812C672523845100F174C9 /* Assets.xcassets */; };
 		7D812C6B2523845100F174C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D812C692523845100F174C9 /* LaunchScreen.storyboard */; };
@@ -30,6 +30,8 @@
 		7D812CD22523B41E00F174C9 /* ColorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812CD12523B41E00F174C9 /* ColorInput.swift */; };
 		7D812CD72523B6EC00F174C9 /* DateInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812CD62523B6EC00F174C9 /* DateInput.swift */; };
 		7D812CDC2523B92D00F174C9 /* BoolInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D812CDB2523B92D00F174C9 /* BoolInput.swift */; };
+		7DC8E523252DF3D7000330C8 /* FormVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DC8E522252DF3D7000330C8 /* FormVC.xib */; };
+		7DC8E52B252DF52B000330C8 /* ButtonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8E52A252DF52B000330C8 /* ButtonVC.swift */; };
 		7DD3B04925264F59007E048D /* LongStringInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD3B04825264F59007E048D /* LongStringInput.swift */; };
 		7DFB729F252609BF008E74C4 /* SingleSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFB729E252609BF008E74C4 /* SingleSelection.swift */; };
 /* End PBXBuildFile section */
@@ -57,7 +59,7 @@
 		7D812C5B2523844E00F174C9 /* FormView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D812C5E2523844E00F174C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D812C602523844E00F174C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7D812C622523844E00F174C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7D812C622523844E00F174C9 /* FormVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormVC.swift; sourceTree = "<group>"; };
 		7D812C652523844E00F174C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7D812C672523845100F174C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D812C6A2523845100F174C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -81,6 +83,8 @@
 		7D812CD12523B41E00F174C9 /* ColorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInput.swift; sourceTree = "<group>"; };
 		7D812CD62523B6EC00F174C9 /* DateInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInput.swift; sourceTree = "<group>"; };
 		7D812CDB2523B92D00F174C9 /* BoolInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoolInput.swift; sourceTree = "<group>"; };
+		7DC8E522252DF3D7000330C8 /* FormVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormVC.xib; sourceTree = "<group>"; };
+		7DC8E52A252DF52B000330C8 /* ButtonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonVC.swift; sourceTree = "<group>"; };
 		7DD3B04825264F59007E048D /* LongStringInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongStringInput.swift; sourceTree = "<group>"; };
 		7DFB729E252609BF008E74C4 /* SingleSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,15 +139,12 @@
 			children = (
 				7D812C5E2523844E00F174C9 /* AppDelegate.swift */,
 				7D812C602523844E00F174C9 /* SceneDelegate.swift */,
-				7D812C622523844E00F174C9 /* ViewController.swift */,
+				7DC8E52A252DF52B000330C8 /* ButtonVC.swift */,
 				7D812C642523844E00F174C9 /* Main.storyboard */,
 				7D812C672523845100F174C9 /* Assets.xcassets */,
 				7D812C692523845100F174C9 /* LaunchScreen.storyboard */,
+				7DC8E532252E0583000330C8 /* FormView */,
 				7D812C6C2523845100F174C9 /* Info.plist */,
-				7D812CAF2523AFEE00F174C9 /* extensions.swift */,
-				7D812C912523861300F174C9 /* FormProperties.swift */,
-				7D635A9B2524EB7000CE3F01 /* FormView.swift */,
-				7D812CCD2523B40500F174C9 /* Cells */,
 			);
 			path = FormView;
 			sourceTree = "<group>";
@@ -185,6 +186,19 @@
 				7D224DC525266E370067CAFB /* CellTitleView.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		7DC8E532252E0583000330C8 /* FormView */ = {
+			isa = PBXGroup;
+			children = (
+				7D812CAF2523AFEE00F174C9 /* extensions.swift */,
+				7D812C912523861300F174C9 /* FormProperties.swift */,
+				7D635A9B2524EB7000CE3F01 /* FormView.swift */,
+				7D812C622523844E00F174C9 /* FormVC.swift */,
+				7D812CCD2523B40500F174C9 /* Cells */,
+				7DC8E522252DF3D7000330C8 /* FormVC.xib */,
+			);
+			path = FormView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DC8E523252DF3D7000330C8 /* FormVC.xib in Resources */,
 				7D812C6B2523845100F174C9 /* LaunchScreen.storyboard in Resources */,
 				7D812C682523845100F174C9 /* Assets.xcassets in Resources */,
 				7D812C662523844E00F174C9 /* Main.storyboard in Resources */,
@@ -322,8 +337,9 @@
 				7D812CD22523B41E00F174C9 /* ColorInput.swift in Sources */,
 				7D812CAB2523AF9200F174C9 /* DoubleInput.swift in Sources */,
 				7DFB729F252609BF008E74C4 /* SingleSelection.swift in Sources */,
-				7D812C632523844E00F174C9 /* ViewController.swift in Sources */,
+				7D812C632523844E00F174C9 /* FormVC.swift in Sources */,
 				7DD3B04925264F59007E048D /* LongStringInput.swift in Sources */,
+				7DC8E52B252DF52B000330C8 /* ButtonVC.swift in Sources */,
 				7D224DC625266E370067CAFB /* CellTitleView.swift in Sources */,
 				7D812CC42523B2F700F174C9 /* IntSub.swift in Sources */,
 				7D812CDC2523B92D00F174C9 /* BoolInput.swift in Sources */,

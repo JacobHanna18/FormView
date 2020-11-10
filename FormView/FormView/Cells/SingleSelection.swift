@@ -14,24 +14,29 @@ struct SingleSelection: View {
         case let .SingleSelection(labels: ls):
             return ls
         default:
-            return ["error"]
+            return ["SingleSelection Err"]
         }
     }
     @State var inp: Int = 0
     var body: some View {
         VStack{
-            CellTitleView(title: cell.title)
+            CellTitleView(title: cell.title).onTapGesture(perform: {
+                cell.tap?()
+            })
             HStack {
                 ForEach((0..<labels.count), id: \.self) {i in
                     Spacer()
                     Button(labels[i]) {
                         inp = i
-                    }.padding(.all, 5).accentColor(i == inp ? Color(UIColor.systemBackground) : Color.accentColor).frame( maxWidth: .infinity).background((i == inp ? Color.blue : Color.clear)).cornerRadius(10.0)
+                    }.padding(.all, 5)
+                    .foregroundColor(i == inp ? Color(UIColor.systemBackground) : Color.accentColor)
+                    .frame( maxWidth: .infinity)
+                    .background((i == inp ? Color.accentColor : Color.clear))
+                    .cornerRadius(10.0)
                 }
                 Spacer()
             }
         }.onAppear(perform: {
-            
             inp = (cell.getT(Int.self) ?? 0)
 
         }).onChange(of: inp, perform: { value in
@@ -43,12 +48,6 @@ struct SingleSelection: View {
 var testSingleSelectionInput = "test input"
 struct SingleSelection_Previews: PreviewProvider {
     static var previews: some View {
-        SingleSelection(cell: FormCell(type: .SingleSelection(labels: ["label1","label2"]), title: "test title", set: { (ind) in
-            if let i = ind as? Int{
-                print(i)
-            }
-        }, get: { () -> Any in
-            return testSingleSelectionInput
-        }))
+        SingleSelectionTemp
     }
 }

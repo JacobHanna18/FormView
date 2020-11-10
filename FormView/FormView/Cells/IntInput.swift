@@ -12,10 +12,12 @@ struct IntInput: View {
     @State var inp: String = "0"
     var body: some View {
         VStack{
-            CellTitleView(title: cell.title)
-            TextField(cell.title ?? "error", text: $inp, onCommit: {
-                UIApplication.shared.endEditing()
-            }).keyboardType(.numberPad).textFieldStyle(RoundedBorderTextFieldStyle())
+            CellTitleView(title: cell.title).onTapGesture(perform: {
+                cell.tap?()
+            })
+            TextField(cell.title ?? "IntIn Err", text: $inp, onCommit: {
+                //UIApplication.shared.endEditing()
+            }).keyboardType(.numberPad).textFieldStyle(MyTextFieldStyle())
         }.onAppear(perform: {
             inp = (cell.getT(Int.self) ?? 0).toString
         }).onChange(of: inp, perform: { value in
@@ -29,14 +31,6 @@ struct IntInput: View {
 var testIntInput = 7647
 struct IntInput_Previews: PreviewProvider {
     static var previews: some View {
-        IntInput(cell: FormCell(type: .IntInput, title: "Test Title", set: { (str) in
-            if let st = str as? Int{
-                testIntInput = st;
-                print(testIntInput)
-            }
-        }, get: { () -> Any in
-            print("get")
-            return testIntInput
-        }))
+        IntInTemp
     }
 }

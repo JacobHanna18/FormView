@@ -13,7 +13,9 @@ struct ColorInput: View {
     var body: some View {
         VStack{
             ColorPicker(selection: $inp, label: {
-                CellTitleView(title: cell.title)
+                CellTitleView(title: cell.title).onTapGesture(perform: {
+                    cell.tap?()
+                })
             })
         }.onAppear(perform: {
             inp = (cell.getT(Color.self) ?? Color.red)
@@ -26,13 +28,6 @@ struct ColorInput: View {
 var testColorInput : Color = .green
 struct ColorInput_Previews: PreviewProvider {
     static var previews: some View {
-        ColorInput(cell: FormCell(type: .ColorInput, title: "test title", set: { (color) in
-            if let co = color as? Color{
-                print(co.description)
-                testColorInput = co
-            }
-        }, get: { () -> Any in
-            return testColorInput
-        }))
+        ColorInTemp
     }
 }

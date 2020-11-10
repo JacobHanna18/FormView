@@ -13,10 +13,12 @@ struct StringSub1: View {
         VStack{
             CellTitleView(title: cell.title)
             HStack {
-                Text(cell.getT(String.self) ?? "error")
+                Text(cell.getT(String.self) ?? "StrSub1 Err")
                 Spacer()
             }
-        }
+        }.onTapGesture(perform: {
+            cell.tap?()
+        })
     }
 }
 

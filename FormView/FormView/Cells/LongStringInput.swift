@@ -20,15 +20,14 @@ struct LongStringInput: View {
     }
     var body: some View {
         VStack{
-            CellTitleView(title: cell.title)
+            CellTitleView(title: cell.title).onTapGesture(perform: {
+                cell.tap?()
+            })
             ZStack{
                 Color.accentColor.opacity(0.5)
                 TextEditor(text: $inp).frame(minHeight: height, idealHeight: height, maxHeight: .infinity)
             }
            
-//            TextField(cell.title ?? "error", text: $inp, onCommit: {
-//                UIApplication.shared.endEditing()
-//            }).textFieldStyle(RoundedBorderTextFieldStyle())
         }.onAppear(perform: {
             inp = cell.getT(String.self) ?? ""
         }).onChange(of: inp, perform: { value in
@@ -39,14 +38,6 @@ struct LongStringInput: View {
 
 struct LongStringInput_Previews: PreviewProvider {
     static var previews: some View {
-        LongStringInput(cell: FormCell(type: .LongStringInput(height: 100), title: "Test Title", set: { (str) in
-            if let st = str as? String{
-                testStringInput = st;
-                print(testStringInput)
-            }
-        }, get: { () -> Any in
-            print("get")
-            return testStringInput
-        }))
+        LongStringInTemp
     }
 }

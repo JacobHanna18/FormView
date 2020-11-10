@@ -13,7 +13,9 @@ struct IntSub: View {
         HStack{
             CellTitleView(title: cell.title)
             Text((cell.getT(Int.self) ?? 0).toString)
-        }
+        }.onTapGesture(perform: {
+            cell.tap?()
+        })
     }
 }
 

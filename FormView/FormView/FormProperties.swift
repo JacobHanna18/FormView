@@ -8,19 +8,27 @@
 import Foundation
 import SwiftUI
 
+extension View{
+    func tappable (action : @escaping ()->Void) -> some View{
+        return self.highPriorityGesture(TapGesture().onEnded(action))
+    }
+}
+
 struct FormProperties{
     var title : String?
     var done : (()->Void)?
     var delete : (()->Void)?
     var dismiss : (()->Void)?
     var cells : [FormCell] = []
+    var button : ButtonType = ButtonType.delete
+    var doneButton : ButtonType = ButtonType.done
 }
 
 enum CellType{
     
     //Strings
     case StringInput
-    case StringTitle
+    case StringTitle(systemImageName : String = "chevron.right")
     case StringSub1
     case StringSub2
     
@@ -33,10 +41,20 @@ enum CellType{
     //other
     case ColorInput
     case DateInput(showTime : Bool, showDate: Bool)
-    case BoolInput
+    case BoolInput(color : Color? = nil, subTitle : [String]? = nil)
     case SingleSelection(labels : [String])
     case LongStringInput(height : CGFloat)
     //case Selection(singleSelection: Bool, labels: [String])
+    case ImageSelection(images : [[UIImage]], background : [Color], ringColor: [Color])
+}
+
+struct ButtonType{
+    var label : String?
+    var showAlert : Bool
+    
+    static var delete = ButtonType(label: "Delete", showAlert: true)
+    static var none = ButtonType(label: nil, showAlert: false)
+    static var done = ButtonType(label: "Done", showAlert: false)
 }
 
 struct FormCell: View, Identifiable{
@@ -47,8 +65,12 @@ struct FormCell: View, Identifiable{
     
     var title : String?
     
+    var divider : Bool = false
+    
     var set : ((Any) -> Void)?
     var get : (() -> Any)?
+    var tap : (()->Void)?
+    
     
     func getT<T>(_ type: T.Type) -> T? {
         if let forcedGet = get{
@@ -93,9 +115,9 @@ struct FormCell: View, Identifiable{
             SingleSelection(cell: self)
         case .LongStringInput:
             LongStringInput(cell: self)
+        case .ImageSelection:
+            ImageSelection(cell: self)
         }
     }
-    
-    
     
 }

@@ -12,10 +12,12 @@ struct DoubleInput: View {
     @State var inp: String = "0.0"
     var body: some View {
         VStack{
-            CellTitleView(title: cell.title)
-            TextField(cell.title ?? "error", text: $inp, onCommit: {
-                UIApplication.shared.endEditing()
-            }).keyboardType(.decimalPad).textFieldStyle(RoundedBorderTextFieldStyle())
+            CellTitleView(title: cell.title).onTapGesture(perform: {
+                cell.tap?()
+            })
+            TextField(cell.title ?? "DoubleIn Err", text: $inp, onCommit: {
+                //UIApplication.shared.endEditing()
+            }).keyboardType(.decimalPad).textFieldStyle(MyTextFieldStyle())
         }.onAppear(perform: {
             inp = (cell.getT(Double.self) ?? 0).toString
         }).onChange(of: inp, perform: { value in
@@ -29,13 +31,6 @@ struct DoubleInput: View {
 var testDoubleInput = 6.076
 struct DoubleInput_Previews: PreviewProvider {
     static var previews: some View {
-        DoubleInput(cell: FormCell(type: .DoubleInput, title: "Test Title", set: { (str) in
-            if let st = str as? Double{
-                testDoubleInput = st;
-                print(testDoubleInput)
-            }
-        }, get: { () -> Any in
-            return testDoubleInput
-        }))
+        DoubleInTemp
     }
 }
