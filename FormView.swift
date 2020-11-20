@@ -12,8 +12,6 @@ struct CellsView : View{
     var props : FormProperties
     
     var body: some View{
-
-        
         ZStack{
             ScrollView {
                 VStack {
