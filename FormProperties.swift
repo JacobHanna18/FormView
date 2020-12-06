@@ -22,6 +22,7 @@ struct FormProperties{
     var cells : [FormCell] = []
     var button : ButtonType = ButtonType.delete
     var doneButton : ButtonType = ButtonType.done
+    var navButton : NavButton? = nil
 }
 
 enum CellType{
@@ -55,6 +56,11 @@ struct ButtonType{
     static var delete = ButtonType(label: "Delete", showAlert: true)
     static var none = ButtonType(label: nil, showAlert: false)
     static var done = ButtonType(label: "Done", showAlert: false)
+}
+
+struct NavButton{
+    var image : String
+    var action : (()->Void)
 }
 
 struct FormCell: View, Identifiable{

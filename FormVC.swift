@@ -12,6 +12,10 @@ protocol Presenting {
     func reload()
 }
 
+protocol Formable {
+    var formPropraties : FormProperties {get}
+}
+
 extension UIViewController{
     
     func showForm(_ getter : @escaping (()->FormProperties)){
@@ -34,6 +38,14 @@ extension UIViewController{
         
         self.present(vc, animated: true, completion: nil)
     }
+    
+    func showForm (_ f : Formable){
+        self.showForm { () -> FormProperties in
+            f.formPropraties
+        }
+    }
+    
+    
 }
 
 class FormVC: UIViewController, Presenting {

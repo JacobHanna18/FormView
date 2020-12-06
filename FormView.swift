@@ -105,7 +105,11 @@ struct FormView: View {
                     showAlert = false
                 })
             )
-        }).navigationBarTitle(Text(props.title ?? "PropTitle Error"))
+        }).navigationBarTitle(Text(props.title ?? "PropTitle Error")).navigationBarItems(trailing: Button(action:{ props.navButton?.action()}, label: {
+            if props.navButton != nil{
+                Image(systemName: props.navButton!.image)
+            }
+        }))
     }
     }
     
