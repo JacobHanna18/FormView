@@ -21,7 +21,7 @@ struct MyTextFieldStyle: TextFieldStyle {
 
 
 extension Double{
-    public var toString : String{
+    public var string : String{
         return self == floor(self) ? "\(Int(self))" : "\(self)"
     }
     public var toTwoString : String{
@@ -35,7 +35,7 @@ extension Double{
 
 
 extension Int{
-    public var toString : String{
+    public var string : String{
         return "\(self)"
     }
 }
