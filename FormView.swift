@@ -12,6 +12,14 @@ struct CellsView : View{
     var props : FormProperties
     
     var body: some View{
+        if props.listView{
+            listBody
+        }else{
+            stackBody
+        }
+    }
+    
+    var stackBody: some View{
         ZStack{
             ScrollView {
                 VStack {
@@ -25,7 +33,12 @@ struct CellsView : View{
                 }
             }
         }
-        
+    }
+    
+    var listBody: some View{
+        List(props.cells, id: \.id) { cell in
+            cell.padding(.horizontal).padding(.vertical,8)
+        }.listStyle(PlainListStyle())
     }
 }
 
@@ -105,12 +118,8 @@ struct FormView: View {
                     showAlert = false
                 })
             )
-        }).navigationBarTitle(Text(props.title ?? "PropTitle Error")).navigationBarItems(trailing: Button(action:{ props.navButton?.action()}, label: {
-            if props.navButton != nil{
-                Image(systemName: props.navButton!.image)
-            }
-        }))
-    }
+        }).navigationBarTitle(Text(props.title ?? "PropTitle Error"))
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
 }

@@ -19,7 +19,7 @@ struct DoubleInput: View {
                 //UIApplication.shared.endEditing()
             }).keyboardType(.decimalPad).textFieldStyle(MyTextFieldStyle())
         }.onAppear(perform: {
-            inp = (cell.getT(Double.self) ?? 0).string
+            inp = (cell.getT(Double.self) ?? 0).toString
         }).onChange(of: inp, perform: { value in
             if let d = Double(inp){
                 cell.setT(d)

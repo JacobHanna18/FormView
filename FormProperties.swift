@@ -22,7 +22,7 @@ struct FormProperties{
     var cells : [FormCell] = []
     var button : ButtonType = ButtonType.delete
     var doneButton : ButtonType = ButtonType.done
-    var navButton : NavButton? = nil
+    var listView : Bool = false
 }
 
 enum CellType{
@@ -47,7 +47,6 @@ enum CellType{
     case LongStringInput(height : CGFloat)
     //case Selection(singleSelection: Bool, labels: [String])
     case ImageSelection(images : [[UIImage]], background : [Color], ringColor: [Color])
-    case Image(image : UIImage)
 }
 
 struct ButtonType{
@@ -57,11 +56,6 @@ struct ButtonType{
     static var delete = ButtonType(label: "Delete", showAlert: true)
     static var none = ButtonType(label: nil, showAlert: false)
     static var done = ButtonType(label: "Done", showAlert: false)
-}
-
-struct NavButton{
-    var image : String
-    var action : (()->Void)
 }
 
 struct FormCell: View, Identifiable{
@@ -124,8 +118,6 @@ struct FormCell: View, Identifiable{
             LongStringInput(cell: self)
         case .ImageSelection:
             ImageSelection(cell: self)
-        case .Image:
-            ImageCell(cell: self)
         }
     }
     

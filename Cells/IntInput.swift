@@ -19,7 +19,7 @@ struct IntInput: View {
                 //UIApplication.shared.endEditing()
             }).keyboardType(.numberPad).textFieldStyle(MyTextFieldStyle())
         }.onAppear(perform: {
-            inp = (cell.getT(Int.self) ?? 0).string
+            inp = (cell.getT(Int.self) ?? 0).toString
         }).onChange(of: inp, perform: { value in
             if let d = Int(inp){
                 cell.setT(d)

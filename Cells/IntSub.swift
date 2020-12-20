@@ -12,7 +12,7 @@ struct IntSub: View {
     var body: some View {
         HStack{
             CellTitleView(title: cell.title)
-            Text((cell.getT(Int.self) ?? 0).string)
+            Text((cell.getT(Int.self) ?? 0).toString)
         }.onTapGesture(perform: {
             cell.tap?()
         })
