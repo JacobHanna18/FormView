@@ -36,9 +36,12 @@ struct CellsView : View{
     }
     
     var listBody: some View{
-        List(props.cells, id: \.id) { cell in
+        List(props.cells) { cell  in
             cell.padding(.horizontal).padding(.vertical,8)
-        }.listStyle(PlainListStyle())
+            if cell.divider{
+                Divider()
+            }
+        }
     }
 }
 
