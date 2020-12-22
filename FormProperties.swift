@@ -29,7 +29,7 @@ enum CellType{
     
     //Strings
     case StringInput
-    case StringTitle(systemImageName : String = "chevron.right")
+    case StringTitle(systemImageName : String = "chevron.right", extraButton : (imageName : String, tap : (()->()))? = nil, color : UIColor? = nil)
     case StringSub1
     case StringSub2
     
@@ -47,6 +47,7 @@ enum CellType{
     case LongStringInput(height : CGFloat)
     //case Selection(singleSelection: Bool, labels: [String])
     case ImageSelection(images : [[UIImage]], background : [Color], ringColor: [Color])
+    case MatrixSelection(columns:Int, values : [Image])
 }
 
 struct ButtonType{
@@ -118,6 +119,8 @@ struct FormCell: View, Identifiable{
             LongStringInput(cell: self)
         case .ImageSelection:
             ImageSelection(cell: self)
+        case .MatrixSelection:
+            MatrixSelection(cell: self)
         }
     }
     

@@ -12,16 +12,43 @@ struct StringTitle: View {
     
     var systemImage : Image{
         switch cell.type {
-        case let .StringTitle(systemImageName: name):
+        case let .StringTitle(systemImageName: name, _,_):
             return Image(systemName: name)
         default:
             return Image(systemName: "chevron.right")
         }
     }
     
-    var body: some View {
-        
+    var extraButton : (Image, (()->()))?{
+        switch cell.type {
+        case let .StringTitle(_, extraButton : button,_):
+            if button == nil{
+                return nil
+            }else{
+                return (Image(systemName: button!.imageName), button!.tap)
+            }
+        default:
+            return nil
+        }
+    }
+    
+    var color : Color?{
+        switch cell.type {
+        case let .StringTitle(_, _, color: c):
+            return c == nil ? nil : Color(c!)
+        default:
+            return nil
+        }
+    }
+    
+    var mainBody : some View{
         HStack{
+            
+            if extraButton != nil{
+                Button(action: {extraButton?.1()}, label: {
+                    extraButton?.0.padding(.leading, 10.0).font(.title)
+                })
+            }
             if cell.tap != nil{
                 HStack {
                     Button(action: {cell.tap?()}, label: {
@@ -30,13 +57,23 @@ struct StringTitle: View {
                     Spacer()
                     Button(action: {cell.tap?()}, label: {
                         systemImage.padding(.leading, 10.0).font(.title2)
-                    }).opacity(0.8)
+                    })
                     
                 }
             }else{
                 CellTitleView(title: cell.title)
             }
         }
+    }
+    
+    var body: some View {
+        
+        if color == nil{
+            mainBody
+        }else{
+            mainBody.accentColor(color)
+        }
+        
         
     }
 }
