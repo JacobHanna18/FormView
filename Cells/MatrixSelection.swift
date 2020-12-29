@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MatrixSelection: View {
     let cell : FormCell
-    var images : [Image] = []
+    var images : [AnyView] = []
     var columns : Int = 1
     @State var selected = 0
     var body: some View {
@@ -21,7 +21,7 @@ struct MatrixSelection: View {
                     ForEach(0 ..< columns, id: \.self) { c in
                         let i = columns * r + c
                         if i < images.count{
-                            images[i].resizable().aspectRatio(contentMode: .fill).foregroundColor(selected == i ? Color.accentColor : Color(UIColor.label)).onTapGesture {
+                            images[i].foregroundColor(selected == i ? Color.accentColor : Color(UIColor.label)).onTapGesture {
                                 cell.setT(i)
                                 selected = i
                             }

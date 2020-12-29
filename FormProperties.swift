@@ -46,7 +46,7 @@ enum CellType{
     case SingleSelection(labels : [String])
     case LongStringInput(height : CGFloat)
     case ImageSelection(images : [[UIImage]], background : [Color], ringColor: [Color])
-    case MatrixSelection(columns:Int, values : [Image])
+    case MatrixSelection(columns:Int, values : [AnyView])
 }
 
 struct ButtonType{
