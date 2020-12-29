@@ -9,8 +9,8 @@ import SwiftUI
 
 struct MatrixSelection: View {
     let cell : FormCell
-    @State var images : [Image] = []
-    @State var columns : Int = 1
+    var images : [Image] = []
+    var columns : Int = 1
     @State var selected = 0
     var body: some View {
         VStack{
@@ -33,16 +33,6 @@ struct MatrixSelection: View {
                     }
                 }
             }
-        }.onAppear(perform: {
-            switch cell.type {
-            case let .MatrixSelection(columns: cul, values: img):
-                images = img
-                columns = cul
-                selected = cell.getT(Int.self) ?? 0
-            default:
-                break
-            }
-            
-        })
+        }
     }
 }

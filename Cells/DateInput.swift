@@ -11,20 +11,13 @@ struct DateInput: View {
     let cell : FormCell
     @State var inp: Date = Date()
     
+    var showTime : Bool
+    var showDate : Bool
+    
     var components : DatePickerComponents{
-        var time = false
-        var date = true
-        switch cell.type {
-        case let .DateInput(showTime: x, showDate: y):
-            time = x
-            date = y
-        default:
-            break
-        }
-        
-        if time && date{
+        if showTime && showDate{
             return [.date,.hourAndMinute]
-        }else if time{
+        }else if showTime{
             return [.hourAndMinute]
         }else {
             return [.date]
@@ -38,17 +31,8 @@ struct DateInput: View {
                     cell.tap?()
                 })
             }
-        }.onAppear(perform: {
-            inp = (cell.getT(Date.self) ?? Date())
-        }).onChange(of: inp, perform: { value in
+        }.onChange(of: inp, perform: { value in
             cell.setT(inp)
         })
-    }
-}
-
-var testDateInput : Date = Date()
-struct DateInput_Previews: PreviewProvider {
-    static var previews: some View {
-        DateInTemp
     }
 }

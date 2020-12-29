@@ -10,8 +10,9 @@ import SwiftUI
 struct BoolInput: View {
     let cell : FormCell
     @State var inp: Bool = true
-    @State var color: Color = Color.accentColor
-    @State var sub : [String]? = nil
+    var color: Color
+    var sub : [String]?
+    
     var body: some View {
         HStack(){
             if cell.tap != nil{
@@ -38,26 +39,8 @@ struct BoolInput: View {
             }
             Toggle(isOn: $inp, label: {
             }).toggleStyle(SwitchToggleStyle(tint: color))
-        }.onAppear(perform: {
-            inp = (cell.getT(Bool.self) ?? true)
-            
-            switch cell.type {
-            case let .BoolInput(color: c, subTitle: str):
-                color = c ?? color
-                sub = str
-            default:
-                break
-            }
-            
-        }).onChange(of: inp, perform: { value in
+        }.onChange(of: inp, perform: { value in
             cell.setT(inp)
         })
-    }
-}
-
-var testBoolInput : Bool = true
-struct BoolInput_Previews: PreviewProvider {
-    static var previews: some View {
-        BoolInTemp
     }
 }

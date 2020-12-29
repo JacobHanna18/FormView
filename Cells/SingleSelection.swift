@@ -9,14 +9,7 @@ import SwiftUI
 
 struct SingleSelection: View {
     let cell : FormCell
-    var labels : [String] {
-        switch cell.type {
-        case let .SingleSelection(labels: ls):
-            return ls
-        default:
-            return ["SingleSelection Err"]
-        }
-    }
+    var labels : [String]
     @State var inp: Int = 0
     var body: some View {
         VStack{
@@ -36,18 +29,8 @@ struct SingleSelection: View {
                 }
                 Spacer()
             }
-        }.onAppear(perform: {
-            inp = (cell.getT(Int.self) ?? 0)
-
-        }).onChange(of: inp, perform: { value in
+        }.onChange(of: inp, perform: { value in
             cell.setT(inp)
         })
-    }
-}
-
-var testSingleSelectionInput = "test input"
-struct SingleSelection_Previews: PreviewProvider {
-    static var previews: some View {
-        SingleSelectionTemp
     }
 }

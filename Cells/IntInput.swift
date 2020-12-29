@@ -18,19 +18,10 @@ struct IntInput: View {
             TextField(cell.title ?? "IntIn Err", text: $inp, onCommit: {
                 //UIApplication.shared.endEditing()
             }).keyboardType(.numberPad).textFieldStyle(MyTextFieldStyle())
-        }.onAppear(perform: {
-            inp = (cell.getT(Int.self) ?? 0).toString
-        }).onChange(of: inp, perform: { value in
+        }.onChange(of: inp, perform: { value in
             if let d = Int(inp){
                 cell.setT(d)
             }
         })
-    }
-}
-
-var testIntInput = 7647
-struct IntInput_Previews: PreviewProvider {
-    static var previews: some View {
-        IntInTemp
     }
 }

@@ -11,9 +11,9 @@ import SwiftUI
 struct ImageSelection: View {
     let cell : FormCell
     
-    @State var backgroundColor : [Color] = [Color.white]
-    @State var ringColor : [Color] = [Color.black]
-    @State var images : [[UIImage]] = []
+    var backgroundColor : [Color] = [Color.white]
+    var ringColor : [Color] = [Color.black]
+    var images : [[UIImage]] = []
     @State var height : CGFloat = 50
     @State var index : (Int,Int) = (-1,-1)
     @State var b : Bool = true
@@ -54,19 +54,7 @@ struct ImageSelection: View {
                 }
             }
             
-        }.onAppear(perform: {
-            index = (cell.getT((Int,Int).self) ?? (0,0))
-            
-            switch cell.type {
-            case let .ImageSelection(images: img, background: b, ringColor: r):
-                images = img
-                backgroundColor = b
-                ringColor = r
-            default:
-                break
-            }
-            
-        }).onChange(of: b, perform: { value in
+        }.onChange(of: b, perform: { value in
             cell.setT(index)
         })
     }

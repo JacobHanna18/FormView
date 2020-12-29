@@ -45,7 +45,6 @@ enum CellType{
     case BoolInput(color : Color? = nil, subTitle : [String]? = nil)
     case SingleSelection(labels : [String])
     case LongStringInput(height : CGFloat)
-    //case Selection(singleSelection: Bool, labels: [String])
     case ImageSelection(images : [[UIImage]], background : [Color], ringColor: [Color])
     case MatrixSelection(columns:Int, values : [Image])
 }
@@ -91,36 +90,36 @@ struct FormCell: View, Identifiable{
     
     var body: some View{
         switch type{
-        case .StringTitle:
-             StringTitle(cell: self)
+        case let .StringTitle(systemImageName : name, extraButton : extraBttn, color : c):
+            StringTitle(cell: self, systemImageName: name, extraButtonName: (extraBttn != nil) ? extraBttn!.imageName : nil, extraButtonTap: (extraBttn != nil) ? extraBttn!.tap : nil, color: (c != nil) ? Color(c!) : nil)
         case .StringInput:
-             StringInput(cell: self)
+            StringInput(cell: self, inp : self.getT(String.self) ?? "")
         case .StringSub1:
              StringSub1(cell: self)
         case .StringSub2:
-             StringSub2(cell: self)
+            AbstractSub(title: self.title, subtitle: self.getT(String.self) ?? "StrSub2 Err", tap: self.tap)
         case .IntSub:
-             IntSub(cell: self)
+            AbstractSub(title: self.title, subtitle: (self.getT(Int.self) ?? 0).toString, tap: self.tap)
         case .IntInput:
-             IntInput(cell: self)
+            IntInput(cell: self,inp: (self.getT(Int.self) ?? 0).toString)
         case .DoubleSub:
-             DoubleSub(cell: self)
+            AbstractSub(title: self.title, subtitle: (self.getT(Double.self) ?? 0).toString, tap: self.tap)
         case .DoubleInput:
-             DoubleInput(cell: self)
+            DoubleInput(cell: self, inp : (self.getT(Double.self) ?? 0).toString)
         case .ColorInput:
-             ColorInput(cell: self)
-        case .DateInput:
-             DateInput(cell: self)
-        case .BoolInput:
-             BoolInput(cell: self)
-        case .SingleSelection:
-            SingleSelection(cell: self)
-        case .LongStringInput:
-            LongStringInput(cell: self)
-        case .ImageSelection:
-            ImageSelection(cell: self)
-        case .MatrixSelection:
-            MatrixSelection(cell: self)
+            ColorInput(cell: self,inp : (self.getT(Color.self) ?? Color.red))
+        case let .DateInput(showTime : time, showDate: date):
+             DateInput(cell: self, inp: self.getT(Date.self) ?? Date(), showTime: time, showDate: date)
+        case let .BoolInput(color : color, subTitle : subs):
+            BoolInput(cell: self,inp: (self.getT(Bool.self) ?? true), color: color ?? Color.accentColor, sub: subs)
+        case let .SingleSelection(labels : labels):
+            SingleSelection(cell: self, labels: labels, inp : (self.getT(Int.self) ?? 0))
+        case let .LongStringInput(height : h):
+            LongStringInput(cell: self,inp : self.getT(String.self) ?? "", height : h)
+        case let .ImageSelection(images : images, background : back, ringColor: ring):
+            ImageSelection(cell: self,backgroundColor: back, ringColor: ring, images: images, index: (self.getT((Int,Int).self) ?? (0,0)))
+        case let .MatrixSelection(columns: c, values : v):
+            MatrixSelection(cell: self, images: v, columns: c,selected : self.getT(Int.self) ?? 0)
         }
     }
     

@@ -20,17 +20,8 @@ struct StringInput: View {
             TextField(cell.title ?? "StrIn Err", text: $inp, onCommit: {
                 //UIApplication.shared.endEditing()
             }).textFieldStyle(MyTextFieldStyle())
-        }.onAppear(perform: {
-            inp = cell.getT(String.self) ?? ""
-        }).onChange(of: inp, perform: { value in
+        }.onChange(of: inp, perform: { value in
             cell.setT(inp)
         })
-    }
-}
-
-var testStringInput = "test input"
-struct StringInput_Previews: PreviewProvider {
-    static var previews: some View {
-        StringInTemp
     }
 }
