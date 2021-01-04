@@ -12,11 +12,29 @@ struct CellsView : View{
     var props : FormProperties
     
     var body: some View{
-        if props.listView{
+        switch props.formType {
+        case .list:
             listBody
-        }else{
+        case .reorder:
+            reOrderBody
+        case .stack:
             stackBody
         }
+    }
+    
+    var reOrderBody: some View{
+        List{
+            ForEach(props.cells) { cell in
+                cell.padding(.horizontal).padding(.vertical,8)
+                if cell.divider{
+                    Divider()
+                }
+            }
+            .onMove(perform: props.onMove)
+            .onDelete(perform: props.onDelete)
+            
+        }
+        .environment(\.editMode, .constant(.active))
     }
     
     var stackBody: some View{

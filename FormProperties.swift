@@ -14,6 +14,12 @@ extension View{
     }
 }
 
+enum FormType {
+    case stack
+    case list
+    case reorder
+}
+
 struct FormProperties{
     var title : String?
     var done : (()->Void)?
@@ -22,7 +28,10 @@ struct FormProperties{
     var cells : [FormCell] = []
     var button : ButtonType = ButtonType.delete
     var doneButton : ButtonType = ButtonType.done
-    var listView : Bool = false
+    
+    var onMove : ((IndexSet, Int) -> Void)?
+    var onDelete : ((IndexSet) -> Void)?
+    var formType : FormType = .stack
 }
 
 enum CellType{
@@ -43,7 +52,7 @@ enum CellType{
     case ColorInput
     case DateInput(showTime : Bool, showDate: Bool)
     case BoolInput(color : Color? = nil, subTitle : [String]? = nil)
-    case SingleSelection(labels : [String])
+    case SingleSelection(labels : [String], columns : Int = -1)
     case LongStringInput(height : CGFloat)
     case ImageSelection(images : [[UIImage]], background : [Color], ringColor: [Color])
     case MatrixSelection(columns:Int, values : [AnyView])
@@ -112,8 +121,8 @@ struct FormCell: View, Identifiable{
              DateInput(cell: self, inp: self.getT(Date.self) ?? Date(), showTime: time, showDate: date)
         case let .BoolInput(color : color, subTitle : subs):
             BoolInput(cell: self,inp: (self.getT(Bool.self) ?? true), color: color ?? Color.accentColor, sub: subs)
-        case let .SingleSelection(labels : labels):
-            SingleSelection(cell: self, labels: labels, inp : (self.getT(Int.self) ?? 0))
+        case let .SingleSelection(labels : labels, columns: col):
+            SingleSelection(cell: self, labels: labels, columns: col, inp : (self.getT(Int.self) ?? 0))
         case let .LongStringInput(height : h):
             LongStringInput(cell: self,inp : self.getT(String.self) ?? "", height : h)
         case let .ImageSelection(images : images, background : back, ringColor: ring):
